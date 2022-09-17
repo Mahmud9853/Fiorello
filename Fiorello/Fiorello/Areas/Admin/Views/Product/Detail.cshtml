@@ -1,0 +1,20 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+}
+<div class="row">
+    <div class="col-12 grid-margin stretch-card ">
+        <div class="card">
+            <div class="card-body float-left">
+                <div class="col-lg-6 ">
+                    <img class="d-flex justify-content-between w-25" src="~/img/@Model.Image" alt="Alternate Text" />
+                </div>
+                <div class="col-lg-6 my-3">
+                    <h1>@Model.Name</h1>
+                    <span>@Model.Price</span>
+                </div>
+                <a class="btn btn-outline-info mx-2 btn-rounded" asp-controller="Product" asp-action="Index">go Back</a>
+            </div>
+        </div>
+    </div>
+</div>

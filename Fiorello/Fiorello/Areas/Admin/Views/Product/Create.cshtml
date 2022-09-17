@@ -1,0 +1,43 @@
+﻿@model Product
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create</h4>
+
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label asp-for="Photo" for="exampleInputName1"></label>
+                        <input asp-for="Photo" class="form-control">
+                        <span asp-validation-for="Photo"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Name" for="exampleInputName1"></label>
+                        <input asp-for="Name" type="text" class="form-control">
+                        <span asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Price" for="exampleInputName1"></label>
+                        <textarea asp-for="Price" rows="6" type="text" class="form-control"></textarea>
+                        <span asp-validation-for="Price"></span>
+                    </div>
+                        <select name="categoryId" class="form-select w-100 p-2 mb-4 text-center" aria-label="Default select example">
+                            <option selected>--Category--</option>
+                    @foreach (Category category in ViewBag.Categories)
+                    {
+                            <option value="@category.Id">@category.Name</option>
+
+
+                    }
+                        </select>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light" asp-controller="Service" asp-action="Index">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,28 @@
+﻿@model ChangeRoleVM
+@{
+    ViewData["Title"] = "ChangeRole";
+}
+
+<form method="post">
+    <select name="newRole" class="form-select w-100 p-2 mb-4 text-center" aria-label="Default select example">
+        <option selected>--Change Role--</option>
+
+        @foreach (string item in Model.Roles)
+        {
+            if (Model.Role == null)
+            {
+                <option value="@item">@item</option>
+
+            }
+            else
+            {
+                <option value="@item">@item</option>
+            }
+
+
+        }
+    </select>
+    <button type="submit" class="btn btn-primary">ChangeRole</button>
+    <a asp-action="Index" class="btn btn-primary">Go Back</a>
+</form>
+

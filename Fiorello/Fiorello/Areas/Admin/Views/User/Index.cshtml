@@ -1,0 +1,90 @@
+﻿@model List<UserVM>
+
+<div class="row">
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body ">
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title">Service Table</h4>
+                    <a asp-action="Create" class="btn btn-outline-info  btn-rounded">Create</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    FullName
+                                </th>
+                                <th>
+                                    UserName
+                                </th>
+                                <th>
+                                    Email
+                                </th>
+                                <th>
+                                    Role
+                                </th>
+                                <th>
+                                    Statuse
+                                </th>
+                                <th class=" d-flex justify-content-end">
+                                    Action
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (UserVM item in Model)
+                            {
+
+                                <tr>
+
+                                    <td>
+                                        @item.FullName
+                                    </td>
+                                    <td>
+                                        @item.UserName
+                                    </td>
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        @item.Role
+                                    </td>
+                                    <td>
+                                        @if (item.IsDeactive)
+                                        {
+                                            <div>Aktiv</div>
+                                        }
+                                        else
+                                        {
+                                            <div>Deaktiv</div>
+                                        }
+                                    </td>
+                                    <td class="d-flex justify-content-end ">
+                                        <a class="btn btn-outline-info mx-2 btn-rounded" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+                                        @if (item.IsDeactive)
+                                        {
+                                            <a class="btn btn-outline-success mx-2 btn-rounded" asp-action="Activity" asp-route-id="@item.Id">Activate</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-outline-danger mx-2 btn-rounded" asp-action="Activity" asp-route-id="@item.Id">Deactivate</a>
+                                        }
+
+                                        <a class="btn btn-outline-success mx-2 btn-rounded" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                        <a class="btn btn-outline-success mx-2 btn-rounded" asp-action="ChangeRole" asp-route-id="@item.Id">ChangeRole</a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

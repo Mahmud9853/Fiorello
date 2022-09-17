@@ -1,0 +1,74 @@
+﻿@model List<Product>
+<div class="row">
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body ">
+                <div class="d-flex justify-content-between">
+                    <h4 class="card-title">Service Table</h4>
+                    <a asp-action="Create" class="btn btn-outline-info  btn-rounded">Create</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Image
+                                </th>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Statuse
+                                </th>
+                                <th class=" d-flex justify-content-end">
+                                    Action
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Product item in Model)
+                            {
+
+                                <tr>
+
+                                    <td>
+                                        <img src="~/img/@item.Image" class="w-50" />
+                                    </td>
+                                    <td>
+                                        @item.Name
+                                    </td>
+                                    <td>
+                                        @if (item.IsDeactive)
+                                        {
+                                            <div>Aktiv</div>
+                                        }
+                                        else
+                                        {
+                                            <div>Deaktiv</div>
+                                        }
+                                    </td>
+                                    <td class="d-flex justify-content-end ">
+                                        <a class="btn btn-outline-info mx-2 btn-rounded" asp-action="Detail" asp-route-id="@item.Id">Detail</a>
+                                        @if (item.IsDeactive)
+                                        {
+                                            <a class="btn btn-outline-success mx-2 btn-rounded" asp-action="Activity" asp-route-id="@item.Id">Activate</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn btn-outline-danger mx-2 btn-rounded" asp-action="Activity" asp-route-id="@item.Id">Deactivate</a>
+                                        }
+
+                                        <a class="btn btn-outline-success mx-2 btn-rounded" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
